@@ -21,7 +21,7 @@ class FilmsDAO extends Dao
 
         $query = $this->_bdd->prepare("SELECT id, title, description FROM films");
         $query->execute();
-        $offers = array();
+        $movies = array();
 
         while ($data = $query->fetch()) {
             $movies[] = new Films($data['id'], $data['title'], $data['description']);
@@ -52,13 +52,13 @@ class FilmsDAO extends Dao
         $query->execute(array(':id_film' => $id_movie));
         $data = $query->fetch();
         $movie = new Films($data['id'], $data['title'], $data['description']);
-        return ($offer);
+        return ($movie);
     }
 
     // supprimer 1 film grâce à son id
     public function deleteFilm($idMovie): int
     {
-        $query = $this->_bdd->prepare('DELETE FROM films WHERE films.idFilm = :idFilm');
+        $query = $this->_bdd->prepare('DELETE FROM films WHERE films.idFilm = :idMovie');
         $query->execute(array('idMovie' => $idMovie));
         return ($query->rowCount());
     }
