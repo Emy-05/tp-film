@@ -7,9 +7,9 @@
  */
 
 //On appelle la fonction getAll() 
-$offresDao = new OffresDAO(); // connexion bdd
+$filmsDao = new FilmsDAO(); // connexion bdd
 /* @var $alloffers type */
-$alloffers = $offresDao->getAll(); // récupération de toutes les offres récupéré dans tableau d'offres
+$allmovies = $filmsDao->getAll(); // récupération de toutes les offres récupéré dans tableau d'offres
 //On affiche le template Twig correspondant
-echo $twig->render('offres.html.twig', ['alloffers' => $alloffers]);
+echo $twig->render('films.html.twig', ['allmovies' => $allmovies]);
 // tableau transféré dans variable twig et on appelle le html spécial avec twig

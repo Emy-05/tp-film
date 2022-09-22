@@ -11,7 +11,7 @@
  *
  * @author 1703728
  */
-class OffresDAO extends Dao
+class FilmsDAO extends Dao
 {
 
     //Récupérer toutes les offres
@@ -19,14 +19,14 @@ class OffresDAO extends Dao
     {
         //On définit la bdd pour la fonction
 
-        $query = $this->_bdd->prepare("SELECT id, title, description FROM offers");
+        $query = $this->_bdd->prepare("SELECT id, title, description FROM films");
         $query->execute();
         $offers = array();
 
         while ($data = $query->fetch()) {
-            $offers[] = new Offres($data['id'], $data['title'], $data['description']);
+            $movies[] = new Films($data['id'], $data['title'], $data['description']);
         }
-        return ($offers);
+        return ($movies);
     }
 
     //Ajouter une offre
@@ -34,7 +34,7 @@ class OffresDAO extends Dao
     {
 
         $valeurs = ['title' => $data->get_title(), 'description' => $data->get_description()];
-        $requete = 'INSERT INTO offers (title, description) VALUES (:title , :description)';
+        $requete = 'INSERT INTO films (title, description) VALUES (:title , :description)';
         $insert = $this->_bdd->prepare($requete);
         if (!$insert->execute($valeurs)) {
             //print_r($insert->errorInfo());
@@ -45,21 +45,21 @@ class OffresDAO extends Dao
     }
 
     //Récupérer plus d'info sur 1 offre
-    public function getOne($id_offer)
+    public function getOne($id_movie)
     {
 
-        $query = $this->_bdd->prepare('SELECT * FROM offers WHERE offers.id = :id_offer')->fetch(PDO::FETCH_ASSOC);
-        $query->execute(array(':id_offer' => $id_offer));
+        $query = $this->_bdd->prepare('SELECT * FROM films WHERE films.idFilm = :id_film')->fetch(PDO::FETCH_ASSOC);
+        $query->execute(array(':id_film' => $id_movie));
         $data = $query->fetch();
-        $offer = new Offres($data['id'], $data['title'], $data['description']);
+        $movie = new Films($data['id'], $data['title'], $data['description']);
         return ($offer);
     }
 
     // supprimer 1 offre grâce à son id
-    public function deleteOffre($idOffer): int
+    public function deleteFilm($idMovie): int
     {
-        $query = $this->_bdd->prepare('DELETE FROM offers WHERE offers.id = :idOffer');
-        $query->execute(array('idOffer' => $idOffer));
+        $query = $this->_bdd->prepare('DELETE FROM films WHERE films.idFilm = :idFilm');
+        $query->execute(array('idMovie' => $idMovie));
         return ($query->rowCount());
     }
 }
