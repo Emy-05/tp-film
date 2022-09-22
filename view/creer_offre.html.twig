@@ -1,0 +1,22 @@
+{% if status is not defined %} {# si status pas défini on affiche le formulaire pour créer une offre #}
+     <form action="creer_offre" method="post">
+     <div class="bloc_formulaire">
+     <label for="title">Titre</label>
+     <input type="text" placeholder="entrer le titre" name="title" required>
+
+     <label for="description">Description</label>
+     <input type="text" placeholder="entrer la description" name="description" required>
+     <button type="submit"> Créer une offre</button>
+     </div>
+     </form>
+</div>
+{% else %} 
+
+<div>
+<p>{{status}} :</p> {# si offre définie affiche offre #}
+{% if offre is defined %}
+     {{offre.get_title}} :
+     {{offre.get_description}}
+     </div>
+     {% endif %}
+{% endif %}

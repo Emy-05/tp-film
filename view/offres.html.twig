@@ -1,0 +1,14 @@
+<div>
+    {% for offer in alloffers %}
+<div>
+    <form action = "supprimer_offre" method="post">
+        <div class ="bloc">
+            <button type="submit">Supprimer</button>
+            <label for="title">{{offer.get_title}} :</label>
+            <label for="description">{{offer.get_description}}</label>
+            <input value="{{offer.get_id}}" name="id" type="hidden">
+        </div>
+    </form>
+</div>
+    {% endfor %}
+</div>
