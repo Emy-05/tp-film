@@ -7,7 +7,7 @@
  */
 
 /**
- * Description of Offres
+ * Description of Films
  *
  * @author 1703728
  */
@@ -29,7 +29,7 @@ abstract class Dao
         }
     }
 
-//Récupérer toutes les items
+    //Récupérer toutes les items
     abstract public function getAll();
 
     //Récupérer plus d'info sur 1 item à l'aide de son id
@@ -42,5 +42,4 @@ abstract class Dao
     {
         $this->_bdd = $_bdd;
     }
-
 }

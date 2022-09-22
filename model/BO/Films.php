@@ -7,11 +7,11 @@
  */
 
 /**
- * Description of Offres
+ * Description of Films
  *
  * @author Vince
  */
-class Offres
+class Films
 {
 
     private $_id;
@@ -62,6 +62,5 @@ class Offres
     public function set_id($_id)
     {
         $this->_id = $_id;
-
     }
 }

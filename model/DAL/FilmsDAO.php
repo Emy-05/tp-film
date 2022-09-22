@@ -7,14 +7,14 @@
  */
 
 /**
- * Description of Offres
+ * Description of films
  *
  * @author 1703728
  */
 class FilmsDAO extends Dao
 {
 
-    //Récupérer toutes les offres
+    //Récupérer tous les films
     public function getAll()
     {
         //On définit la bdd pour la fonction
@@ -29,7 +29,7 @@ class FilmsDAO extends Dao
         return ($movies);
     }
 
-    //Ajouter une offre
+    //Ajouter une film
     public function add($data)
     {
 
@@ -44,7 +44,7 @@ class FilmsDAO extends Dao
         }
     }
 
-    //Récupérer plus d'info sur 1 offre
+    //Récupérer plus d'info sur 1 film
     public function getOne($id_movie)
     {
 
@@ -55,7 +55,7 @@ class FilmsDAO extends Dao
         return ($offer);
     }
 
-    // supprimer 1 offre grâce à son id
+    // supprimer 1 film grâce à son id
     public function deleteFilm($idMovie): int
     {
         $query = $this->_bdd->prepare('DELETE FROM films WHERE films.idFilm = :idFilm');

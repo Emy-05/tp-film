@@ -11,12 +11,12 @@ if (isset($_POST['title']) && isset($_POST['description'])) { // on récupère t
 
 
     $film = new Films(null, $_POST['title'], $_POST['description']);
-    //création offre
+    //création film
 
-    //$offre->set_title("JEE Developpeur");
-    //$offre->set_description("Super job de développeur");
+    //$film->set_title("JEE Developpeur");
+    //$film->set_description("Super job de développeur");
 
-    $status = $filmsDao->add($film); // appelle contrôleur add pour ajouter une offre
+    $status = $filmsDao->add($film); // appelle contrôleur add pour ajouter une film
 
     //On affiche le template Twig correspondant
     if ($status) {
@@ -24,6 +24,6 @@ if (isset($_POST['title']) && isset($_POST['description'])) { // on récupère t
     } else {
         echo $twig->render('creer_film.html.twig', ['status' => "Erreur Ajout"]);
     }
-} else { // on affiche le twig avec le formulaire pour ajouter l'offre
+} else { // on affiche le twig avec le formulaire pour ajouter l'film
     echo $twig->render('creer_film.html.twig');
 }
