@@ -1,12 +1,12 @@
 <div>
-    {% for offer in alloffers %}
+    {% for movie in allfilms %}
 <div>
-    <form action = "supprimer_offre" method="post">
+    <form action = "supprimer_film" method="post">
         <div class ="bloc">
             <button type="submit">Supprimer</button>
-            <label for="title">{{offer.get_title}} :</label>
-            <label for="description">{{offer.get_description}}</label>
-            <input value="{{offer.get_id}}" name="id" type="hidden">
+            <label for="title">{{movie.get_title}} :</label>
+            <label for="description">{{movie.get_description}}</label>
+            <input value="{{movie.get_id}}" name="id" type="hidden">
         </div>
     </form>
 </div>

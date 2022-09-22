@@ -1,5 +1,5 @@
 {% if status is not defined %} {# si status pas défini on affiche le formulaire pour créer une offre #}
-     <form action="creer_offre" method="post">
+     <form action="creer_film" method="post">
      <div class="bloc_formulaire">
      <label for="title">Titre</label>
      <input type="text" placeholder="entrer le titre" name="title" required>
@@ -14,9 +14,9 @@
 
 <div>
 <p>{{status}} :</p> {# si offre définie affiche offre #}
-{% if offre is defined %}
-     {{offre.get_title}} :
-     {{offre.get_description}}
+{% if film is defined %}
+     {{film.get_title}} :
+     {{film.get_description}}
      </div>
      {% endif %}
 {% endif %}
