@@ -19,7 +19,7 @@ class FilmsDAO extends Dao
     {
         //On définit la bdd pour la fonction
 
-        $query = $this->_bdd->prepare("SELECT id, title, description FROM films");
+        $query = $this->_bdd->prepare("SELECT idFilm, titre, realisateur, affiche, FROM films");
         $query->execute();
         $movies = array();
 
