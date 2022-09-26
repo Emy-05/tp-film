@@ -1,13 +1,17 @@
 <div>
     {% for movie in allfilms %}
-    <div>
-
-    <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">Rechercher</button>
-    </div>
-
-
+   
+ <div class="container-fluid">
+        <div class="bg-light">
+            <div class="row">
+            <h1>Rechercher un film</h1>
+            <p>Saisir un mot du titre</p>
+                <div class="input-group">
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <button type="button" class="btn btn-outline-primary">Rechercher</button>
+                </div>
+            </div>
+        </div>
     </div>
     {% endfor %}
 </div>

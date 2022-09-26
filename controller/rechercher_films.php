@@ -16,5 +16,5 @@ if (isset($_POST["search"])) {
 }
 
 //On affiche le template Twig correspondant
-echo $twig->render('films.html.twig', ['allmovies' => $allmovies]);
+echo $twig->render('rechercher_films.html.twig', ['allmovies' => $allmovies]);
 // tableau transféré dans variable twig et on appelle le html spécial avec twig
