@@ -10,7 +10,7 @@
 $filmsDao = new FilmsDAO(); // connexion bdd
 /* @var $allmovies type */
 if (isset($_POST["search"])) {
-    $allFilms = $filmsDao->getAll($_POST["search"]);
+    $allmovies = $filmsDao->getAll($_POST["search"]);
 } else {
     $allmovies = $filmsDao->getAll(); // récupération de tous les films récupéré dans tableau d'offres
 }
