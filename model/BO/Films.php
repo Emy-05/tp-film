@@ -14,53 +14,96 @@
 class Films
 {
 
-    private $_id;
-    private $_title;
-    private $_description;
+    private $_idFilm;
+    private $_titre;
+    private $_realisateur;
+    private $_affiche;
+    private $_annee;
 
-    public function __construct($id = null, $title = null, $description = null)
+    private $_tabRoles = array();
+
+    public function __construct($idFilm = null, $titre = null, $realisateur = null, $affiche = null, $annee = null, $tabRoles = [])
     {
-        if (!is_null($id)) {
-            $this->set_id($id);
+        if (!is_null($idFilm)) {
+            $this->set_idFilm($idFilm);
         }
-        $this->set_title($title);
-        $this->set_description($description);
+        $this->set_titre($titre);
+        $this->set_realisateur($realisateur);
+        $this->set_affiche($affiche);
+        $this->set_annee($annee);
+        $this->set_tabRoles($tabRoles);
     }
 
-    public function get_title()
+    // ajout des getters
+
+    public function get_titre()
     {
-        return $this->_title;
+        return $this->_titre;
     }
 
-    public function get_description()
+    public function get_realisateur()
     {
         return $this->_description;
     }
 
-    public function set_title($_title)
+    public function get_affiche()
     {
-        $this->_title = $_title;
+        return $this->_affiche;
     }
 
-    public function set_description($_description)
+    public function get_annee()
     {
-        $this->_description = $_description;
+        return $this->_annee;
+    }
+
+    public function get_tabRoles()
+    {
+        return $this->_tabRoles;
+    }
+
+    // ajout des setters
+
+    public function set_titre($_titre)
+    {
+        $this->_title = $_titre;
+    }
+
+    public function set_realisateur($_realisateur)
+    {
+        $this->_description = $_realisateur;
+    }
+
+    public function set_affiche($_affiche)
+    {
+        $this->_title = $_affiche;
+    }
+    public function set_annee($_annee)
+    {
+        $this->_title = $_annee;
+    }
+    public function set_tabRoles($_tabRoles)
+    {
+        $this->_title = $_tabRoles;
     }
 
     /**
-     * Get the value of _id
+     * Get the value of _idFilm
      */
-    public function get_id()
+    public function get_idFilm()
     {
-        return $this->_id;
+        return $this->_idFilm;
     }
 
     /**
-     * Set the value of _id
+     * Set the value of _idFilm
      *
      */
-    public function set_id($_id)
+    public function set_idFilm($_idFilm)
     {
-        $this->_id = $_id;
+        $this->_idFilm = $_idFilm;
     }
+
+    // ajouter rôle
+
+    //récup rôle
 }
