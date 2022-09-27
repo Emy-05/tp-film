@@ -43,7 +43,7 @@ class Films
 
     public function get_realisateur()
     {
-        return $this->_description;
+        return $this->_realisateur;
     }
 
     public function get_affiche()
@@ -61,49 +61,40 @@ class Films
         return $this->_tabRoles;
     }
 
-    // ajout des setters
-
-    public function set_titre($_titre)
-    {
-        $this->_title = $_titre;
-    }
-
-    public function set_realisateur($_realisateur)
-    {
-        $this->_description = $_realisateur;
-    }
-
-    public function set_affiche($_affiche)
-    {
-        $this->_title = $_affiche;
-    }
-    public function set_annee($_annee)
-    {
-        $this->_title = $_annee;
-    }
-    public function set_tabRoles($_tabRoles)
-    {
-        $this->_title = $_tabRoles;
-    }
-
-    /**
-     * Get the value of _idFilm
-     */
     public function get_idFilm()
     {
         return $this->_idFilm;
     }
 
-    /**
-     * Set the value of _idFilm
-     *
-     */
+    // ajout des setters
+
+    public function set_titre($_titre)
+    {
+        $this->_titre = $_titre;
+    }
+
+    public function set_realisateur($_realisateur)
+    {
+        $this->_realisateur = $_realisateur;
+    }
+
+    public function set_affiche($_affiche)
+    {
+        $this->_affiche = $_affiche;
+    }
+
+    public function set_annee($_annee)
+    {
+        $this->_annee = $_annee;
+    }
+
+    public function set_tabRoles($_tabRoles)
+    {
+        $this->_tabRoles = $_tabRoles;
+    }
+
     public function set_idFilm($_idFilm)
     {
         $this->_idFilm = $_idFilm;
     }
-
-    // ajouter rôle
-
-    //récup rôle
 }
