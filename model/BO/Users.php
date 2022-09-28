@@ -11,7 +11,7 @@
  *
  * @author Vince
  */
-class Utilisateurs
+class Users
 {
 
     private $_id;

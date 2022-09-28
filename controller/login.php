@@ -7,17 +7,16 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     /*foreach ($users as $user) {
         //utilisateur trouvée
     }*/
-    $utilisateursDao = new UtilisateursDAO(); // connexion bdd
+    $usersDao = new UsersDAO(); // connexion bdd
 
-    $utilisateur = new Utilisateurs(null, $_POST['email'], $_POST['password']);
+    $user = new Users(null, $_POST['email'], $_POST['password']);
     //création user
 
-
-    $status = $utilisateursDao->add($utilisateur); // appelle contrôleur add pour ajouter une film
+    $status = $usersDao->add($user); // appelle contrôleur add pour ajouter une film
 
     //On affiche le template Twig correspondant
     if ($status) {
-        echo $twig->render('login.html.twig', ['status' => "Ajout OK", 'utilisateur' => $utilisateur]);
+        echo $twig->render('login.html.twig', ['status' => "Ajout OK", 'utilisateur' => $user]);
     } else {
         echo $twig->render('login.html.twig', ['status' => "Erreur Ajout"]);
     }
