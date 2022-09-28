@@ -19,14 +19,14 @@ class FilmsDAO extends Dao
     {
         //On définit la bdd pour la fonction
 
-        $query = $this->_bdd->prepare("SELECT idFilm, titre, realisateur, affiche, FROM films");
+        $query = $this->_bdd->prepare("SELECT idFilm, titre, realisateur, affiche, idActeur, personnage, idRole, nom, prenom  FROM `films` INNER JOIN roles ON films.idFilm = roles.idFilm INNER JOIN acteurs ON roles.idActeur = acteurs.idActeur");
         $query->execute();
         $movies = array();
 
         while ($data = $query->fetch()) {
             $movies[] = new Films($data['id'], $data['title'], $data['description']);
         }
-        return ($movies); 
+        return ($movies);
     }
 
     //Ajouter une film
