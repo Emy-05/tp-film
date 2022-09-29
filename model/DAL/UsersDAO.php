@@ -11,12 +11,28 @@ class UsersDAO extends Dao
 {
 
 
+    //Récupérer tous les utilisateurs
+    public function getAll()
+    {
+        //On définit la bdd pour la fonction
+
+        $query = $this->_bdd->prepare("SELECT idUser, email, password, userName FROM user");
+        $query->execute();
+        $users = array();
+
+        while ($data = $query->fetch()) {
+            $users[] = new Users($data['idUser'], $data['email'], $data['password']);
+        }
+        return ($users);
+    }
+
+
     //Ajouter un utilisateur
     public function add($data)
     {
-        //Requete INNER JOIN dans le MODEL
+        //Requete d'insertion INNER JOIN dans le MODEL
         $valeurs = ['email' => $data->get_email(), 'password' => $data->get_password()];
-        $requete = 'INSERT INTO * FROM `user` (email, password) VALUES (:email, :password)';
+        $requete = 'INSERT INTO user (email, password) VALUES (:email, :password)';
         $insert = $this->_bdd->prepare($requete);
         if (!$insert->execute($valeurs)) {
             //print_r($insert->errorInfo());
@@ -26,22 +42,6 @@ class UsersDAO extends Dao
         }
     }
 
-
-    //Récupérer tous les utilisateurs
-    public function getAll()
-    {
-        //On définit la bdd pour la fonction
-
-        $query = $this->_bdd->prepare("SELECT * FROM user WHERE username=:id;");
-        //$query = $this->_bdd->prepare("SELECT idUser, email, password FROM utilisateurs");
-        $query->execute();
-        $users = array();
-
-        while ($data = $query->fetch()) {
-            $users[] = new Users($data['idUser'], $data['email'], $data['password']);
-        }
-        return ($users);
-    }
 
     //Récupérer plus d'info sur 1 film
     public function getOne($id_user)
@@ -53,6 +53,67 @@ class UsersDAO extends Dao
         $user = new Users($data['id_user'], $data['email'], $data['password']);
         return ($user);
     }
+
+    // supprimer 1 user grâce à son id
+    public function deleteUser($idUser): int
+    {
+        $query = $this->_bdd->prepare('DELETE FROM user WHERE user.idUser = :idUser');
+        $query->execute(array('idUser' => $idUser));
+        return ($query->rowCount());
+    }
+
+
+    /*-----------------------------
+    class UserDAO {
+   
+        /**
+         * sauvegarde un utilisateur en bdd
+         * @param type $user tableau associatif
+         * @return boolean true si insertion ok
+         * @throws AlreadyExistException si l'utilisateur existe déjà
+         */
+    /*public static function save($user){
+            $bdd = connectDB();
+            
+            //exist déjà ?
+            $stmt = $bdd->prepare('SELECT * FROM user WHERE login = :login');
+            $stmt->bindValue(':login', $user['login']);
+            $stmt->execute();
+            $rows = $stmt->fetch(PDO::FETCH_NUM);
+            if( $rows > 0 ){
+               throw new AlreadyExistException();
+            }
+    
+            
+            
+            $stmt = $bdd->prepare('
+                 INSERT INTO user ( login, mdp, email)
+                     VALUES (:login, :mdp, :email)');
+             $stmt->bindValue(':login', $user['login'], PDO::PARAM_STR);
+             $stmt->bindValue(':mdp', $user['mdp'], PDO::PARAM_STR);
+             $stmt->bindValue(':email', $user['email'], PDO::PARAM_STR);
+             
+             $res =  $stmt->execute();
+             if ($res){
+                 $film['id'] = $bdd->lastInsertId();
+                return true;
+            }else {
+                return false;
+            }
+        }
+        
+        
+        public static function findByUser($login){
+            $bdd = connectDB();
+            $stmt = $bdd->prepare('SELECT * FROM utilisateur WHERE login = :login');
+            $stmt->bindValue(':login', $login);
+            $stmt->execute();
+            $utilisateur = $stmt->fetch();
+            
+            return $utilisateur;
+        }
+    }*/
+
 
     /*//Ajouter un utilisateur 
     function addUser($email, $password)

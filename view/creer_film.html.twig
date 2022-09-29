@@ -1,22 +1,25 @@
-{% if status is not defined %} {# si status pas défini on affiche le formulaire pour créer une offre #}
-     <form action="creer_film" method="post">
-     <div class="bloc_formulaire">
-     <label for="title">Titre</label>
-     <input type="text" placeholder="entrer le titre" name="title" required>
+{% if status is not defined %}
+	{# si status pas défini on affiche le formulaire pour créer une offre #}
+	<form action="creer_film" method="post">
+		<div class="bloc_formulaire">
+			<label for="title">Titre</label>
+			<input type="text" placeholder="entrer le titre" name="title" required>
 
-     <label for="description">Description</label>
-     <input type="text" placeholder="entrer la description" name="description" required>
-     <button type="submit"> Ajouter</button>
-     </div>
-     </form>
-</div>
-{% else %} 
+			<label for="description">Description</label>
+			<input type="text" placeholder="entrer la description" name="description" required>
+			<button type="submit">
+				Ajouter</button>
+		</div>
+	</form>
+</div>{% else %}
 
 <div>
-<p>{{status}} :</p> {# si offre définie affiche offre #}
-{% if film is defined %}
-     {{film.get_titre}} :
-     {{film.get_realisateur}}
-     </div>
-     {% endif %}
-{% endif %}
+	<p>{{status}}
+		:</p>
+	{# si offre définie affiche offre #}
+	{% if film is defined %}
+		{{film.get_titre}}
+		:
+		{{film.get_realisateur}}
+	</div>
+{% endif %}{% endif %}

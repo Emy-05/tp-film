@@ -3,22 +3,7 @@
 //Elle va persister entre 2 variables php
 
 // Formulaire de connexion
-/*
-@$login = $_POST["login"];
-@$password = $_POST["pass"];
-@$valider = $_POST["valider"];
-$bonLogin = "userFilm";
-$bonPass = "007";
-$erreur = "";
-if (isset($valider)) {
-    if ($login == $bonLogin && $password == $bonPass) {
-        echo $twig->render('connexion.html.twig', ['status' => "Ajout OK", 'film' => $film]);
-    } else {
 
-        echo $twig->render('connxion.html.twig', ["Mauvais login ou mot de passe!"]);
-        $erreur = "Mauvais login ou mot de passe!";
-    }
-}*/
 
 //Soumission de formulaire
 
