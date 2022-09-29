@@ -1,9 +1,8 @@
 <div class="row">
 	<div class="p-5 mb-2 ">
 		<div class="col-sm-3 border-0 ">
-			<div class="" bloc_formulaire">
-
-				<form action="/controller/login.php" method="post">
+			<div class="formulaire">
+				<form action="login" method="post">
 					<fieldset>
 						<legend>
 							Connexion
@@ -12,7 +11,6 @@
 						<div class="mb-3">
 							<label for="exampleInputEmail1" class="form-label">Email address</label>
 							<input type="email" placeholder="sande@afpa.fr" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-
 						</div>
 
 						<div class="mb-3">
@@ -30,7 +28,17 @@
 						</button>
 					</fieldset>
 				</form>
-
 			</div>
 		</div>
 	</div>
+</div>
+
+
+<div>
+	<p>{{status}}:</p>
+	{# si compte définie affiche utilisateur #}
+	{% if user is defined %}
+		{{user.get_email}}:
+		{{user.get_password}}
+	</div>
+{% endif %}
