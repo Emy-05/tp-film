@@ -14,9 +14,9 @@ class UsersDAO extends Dao
     //Ajouter un utilisateur
     public function add($data)
     {
-
+        //Requete INNER JOIN dans le MODEL
         $valeurs = ['email' => $data->get_email(), 'password' => $data->get_password()];
-        $requete = 'INSERT INTO user (email, password) VALUES (:email, :password)';
+        $requete = 'INSERT INTO * FROM `user` (email, password) VALUES (:email, :password)';
         $insert = $this->_bdd->prepare($requete);
         if (!$insert->execute($valeurs)) {
             //print_r($insert->errorInfo());

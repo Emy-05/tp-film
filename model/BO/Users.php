@@ -14,17 +14,31 @@
 class Users
 {
 
-    private $_id;
+    private $_idUser;
+    private $_userName;
     private $_email;
     private $_password;
 
-    public function __construct($id = null, $email = null, $password = null)
+    public function __construct($idUser = null, $userName = null, $email = null, $password = null)
     {
-        if (!is_null($id)) {
-            $this->set_id($id);
+        if (!is_null($idUser)) {
+            $this->set_idUser($idUser);
         }
+
+        $this->set_idUser($idUser);
+        $this->set_userName($userName);
         $this->set_email($email);
         $this->set_password($password);
+    }
+
+    public function get_idUser()
+    {
+        return $this->_idUser;
+    }
+
+    public function get_userName()
+    {
+        return $this->_userName;
     }
 
     public function get_email()
@@ -37,7 +51,19 @@ class Users
         return $this->_password;
     }
 
+    // ajout des setters
+
+    public function set_idUser($_idUser)
+    {
+        $this->_idUser = $_idUser;
+    }
+
+    public function set_userName($_userName)
+    {
+        $this->_userName = $_userName;
+    }
     public function set_email($_email)
+
     {
         $this->_email = $_email;
     }
@@ -45,22 +71,5 @@ class Users
     public function set_password($_password)
     {
         $this->_password = $_password;
-    }
-
-    /**
-     * Get the value of _id
-     */
-    public function get_id()
-    {
-        return $this->_id;
-    }
-
-    /**
-     * Set the value of _id
-     *
-     */
-    public function set_id($_id)
-    {
-        $this->_id = $_id;
     }
 }
