@@ -19,22 +19,23 @@ class FilmsDAO extends Dao
     {
         //On définit la bdd pour la fonction
 
-        $query = $this->_bdd->prepare("SELECT idFilm, titre, realisateur, affiche, idActeur, personnage, idRole, nom, prenom  FROM `films` INNER JOIN roles ON films.idFilm = roles.idFilm INNER JOIN acteurs ON roles.idActeur = acteurs.idActeur");
+        $query = $this->_bdd->prepare("SELECT films.idFilm, titre, realisateur, affiche, annee FROM films");
         $query->execute();
-        $movies = array();
+        $movies = array(); // récupération des films dans un tableau $movies
 
         while ($data = $query->fetch()) {
-            $movies[] = new Films($data['id'], $data['title'], $data['description']);
+            $movies[] = new Films($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
         }
-        return ($movies);
+        return ($movies); // on retourne le tableau des films rempli des infos prises dans la bdd
     }
+
 
     //Ajouter une film
     public function add($data)
     {
 
-        $valeurs = ['title' => $data->get_title(), 'description' => $data->get_description()];
-        $requete = 'INSERT INTO films (title, description) VALUES (:title , :description)';
+        $valeurs = ['titre' => $data->get_titre(), 'realisateur' => $data->get_realisateur(), 'affiche' => $data->get_affiche(), 'annee' => $data->get_annee()];
+        $requete = 'INSERT INTO films (titre, realisateur, affiche, annee) VALUES (:titre , :realisateur, :affiche, :annee)';
         $insert = $this->_bdd->prepare($requete);
         if (!$insert->execute($valeurs)) {
             //print_r($insert->errorInfo());
@@ -48,10 +49,10 @@ class FilmsDAO extends Dao
     public function getOne($id_movie)
     {
 
-        $query = $this->_bdd->prepare('SELECT * FROM films WHERE films.idFilm = :id_film')->fetch(PDO::FETCH_ASSOC);
-        $query->execute(array(':id_film' => $id_movie));
+        $query = $this->_bdd->prepare('SELECT * FROM films WHERE films.idFilm = :idFilm')->fetch(PDO::FETCH_ASSOC);
+        $query->execute(array(':idFilm' => $id_movie));
         $data = $query->fetch();
-        $movie = new Films($data['id'], $data['title'], $data['description']);
+        $movie = new Films($data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
         return ($movie);
     }
 

@@ -16,15 +16,33 @@
          {# fin bloc rechercher un film #}         
                         
                     
-{% for movie in allmovies %}           
-   <h2>{{film.get_titre}} ({{film.get_annee}})</h2>
+{% if movie is not defined %}  {# si le film est inconnu on affiche un message et une image vide #}
 
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<h2>Film non trouvé</h2>
+ <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{film.get_affiche}}" class="d-block w-100" alt="...">
+      <img src="https://via.placeholder.com/250" class="d-block w-100" alt="affiche film">
     </div>
   </div>
+</div>
+
+
+{% else %}
+{% endif %}
+{% for movie in allmovies %} {# pour tous les films trouvés on affiche ses infos #}
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{film.get_affiche}}" class="d-block w-100" alt="affiche film">
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Acteurs:</h5>
+    <p class="card-text">{{film.get_prenom}} {{film.get_nom}} ( {{film.get_tabRoles}})<br></p>
+  </div>
+</div>
 </div>
 
 
@@ -34,12 +52,7 @@
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
     <span class="visually-hidden">Next</span>
-  </button>
-    <div class="container-fluid mt-3">
-  <p>Acteurs:<br>
-  {{film.get_prenom}} {{film.get_nom}}( {{film.get_tabRoles}})
-  </p>
-</div>        
+  </button>      
             
             </div>
         </div>
