@@ -32,13 +32,3 @@
 		</div>
 	</div>
 </div>
-
-
-<div>
-	<p>{{status}}:</p>
-	{# si compte définie affiche utilisateur #}
-	{% if user is defined %}
-		{{user.get_email}}:
-		{{user.get_password}}
-	</div>
-{% endif %}
