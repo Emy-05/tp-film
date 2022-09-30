@@ -11,7 +11,7 @@
  *
  * @author Vince
  */
-class Role
+class Roles
 {
     private $_idActeur;
     private $_idFilm;
