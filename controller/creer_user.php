@@ -3,9 +3,9 @@
 // Traitement du formulaire de connexion
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
-    $usersDao = new UserDAO(); // connexion bdd
+    $usersDao = new UsersDAO(); // connexion bdd
 
-    $user = new User($_POST['email'], $_POST['password']);
+    $user = new Users($_POST['email'], $_POST['password']);
     //création user
 
     $status = $usersDao->add($user); // appelle contrôleur add pour ajouter un utilisateur

@@ -10,22 +10,11 @@ $randstr = substr(md5(rand()), 0, 7);
 
 //verifier que la variable de session ... possede une valeur coourante
 if (isset($_SESSION['email'])) {
-  $email     = $_SESSION['email'];
+  $email = $_SESSION['email'];
   $loggedin = TRUE;      // Utilisateur identifié
   $userstr  = "Connecté en tant que : $email";
 } else $loggedin = FALSE;  // Utilisateur non identifié
 
-echo <<<_PRINCIPAL
-    <title>  - $userstr</title>
-  </head>
-  <body>
-    <div data-role='page'>
-      <div data-role='header'>
-        <div class='username'>$userstr</div>
-      </div>
-      <div data-role='content'>
-
-_PRINCIPAL;
 
 if ($loggedin) {
   echo <<<_CONNECTE
