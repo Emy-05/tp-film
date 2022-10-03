@@ -7,7 +7,7 @@
  
  */
 
-class UsersDAO extends Dao
+class UserDAO extends Dao
 {
     // Fonction qui vérifie que l'identification saisie 
     // est correcte.
@@ -41,7 +41,7 @@ class UsersDAO extends Dao
         $users = array();
 
         while ($data = $query->fetch()) {
-            $users[] = new Users($data['idUser'], $data['email'], $data['password'], $data['userName']);
+            $users[] = new User($data['idUser'], $data['email'], $data['password'], $data['userName']);
         }
         return ($users);
     }
@@ -60,13 +60,15 @@ class UsersDAO extends Dao
             return true;
         }
     }
-    /* $req2 = $database->prepare('INSERT INTO user VALUES(:email, :password, :type');
+    /* $req2 = $database->prepare('INSERT INTO user VALUES(:email, :password');
     $req2->execute(array(
         'email' => $_POST['email'],
         'password' => $_POST['password'],
         'type' => 'normal'
         ));*/
 
+    //$result = queryMySQL("INSERT INTO user VALUES email, password 
+    //WHERE email = '$email AND password = $password);
 
 
     public function getOne($id_user)
@@ -75,7 +77,7 @@ class UsersDAO extends Dao
         $query = $this->_bdd->prepare('SELECT * FROM user WHERE user.idUsers = :id_user')->fetch(PDO::FETCH_ASSOC);
         $query->execute(array(':id_user' => $id_user));
         $data = $query->fetch();
-        $user = new Users($data['id_user'], $data['email'], $data['password']);
+        $user = new User($data['id_user'], $data['email'], $data['password']);
         return ($user);
     }
 
