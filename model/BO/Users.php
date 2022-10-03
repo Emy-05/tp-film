@@ -14,10 +14,10 @@
 class Users
 {
 
-    private $_idUser;
-    private $_userName;
-    private $_email;
-    private $_password;
+    private $idUser;
+    private $userName;
+    private $email;
+    private $password;
 
     public function __construct($idUser = null, $userName = null, $email = null, $password = null)
     {
@@ -33,44 +33,44 @@ class Users
 
     public function get_idUser()
     {
-        return $this->_idUser;
+        return $this->idUser;
     }
 
     public function get_userName()
     {
-        return $this->_userName;
+        return $this->userName;
     }
 
     public function get_email()
     {
-        return $this->_email;
+        return $this->email;
     }
 
     public function get_password()
     {
-        return $this->_password;
+        return $this->password;
     }
 
     // ajout des setters
 
-    public function set_idUser($_idUser)
+    public function set_idUser($idUser)
     {
-        $this->_idUser = $_idUser;
+        $this->idUser = $idUser;
     }
 
-    public function set_userName($_userName)
+    public function set_userName($userName)
     {
-        $this->_userName = $_userName;
+        $this->userName = $userName;
     }
-    public function set_email($_email)
+    public function set_email($email)
 
     {
-        $this->_email = $_email;
+        $this->email = $email;
     }
 
-    public function set_password($_password)
+    public function set_password($password)
     {
-        $this->_password = $_password;
+        $this->password = $password;
     }
 
     function utilisateur_existe($_email, $_password)

@@ -14,9 +14,9 @@
 class Acteurs
 {
 
-    private $_idActeur;
-    private $_nom;
-    private $_prenom;
+    private $idActeur;
+    private $nom;
+    private $prenom;
 
 
     public function __construct($idActeur = null, $nom = null, $prenom = null)
@@ -29,34 +29,34 @@ class Acteurs
     // ajout des getters
     public function get_idActeur()
     {
-        return $this->_idActeur;
+        return $this->idActeur;
     }
 
     public function get_nom()
     {
-        return $this->_nom;
+        return $this->nom;
     }
 
     public function get_prenom()
     {
-        return $this->_prenom;
+        return $this->prenom;
     }
 
 
     // ajout des setters
 
-    public function set_idActeur($_idActeur)
+    public function set_idActeur($idActeur)
     {
-        $this->_idActeur = $_idActeur;
+        $this->idActeur = $idActeur;
     }
 
-    public function set_nom($_nom)
+    public function set_nom($nom)
     {
-        $this->_nom = $_nom;
+        $this->nom = $nom;
     }
 
-    public function set_prenom($_prenom)
+    public function set_prenom($prenom)
     {
-        $this->_prenom = $_prenom;
+        $this->prenom = $prenom;
     }
 }
