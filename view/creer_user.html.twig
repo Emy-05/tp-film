@@ -4,36 +4,36 @@
 		<div class="row justify-content-end">
 			<div class="p-5mb-2col-sm-3">
 				<form action="creer_user" method="post">
-					<fieldset>
-						<legend>
-							<i class="fa fa-lock" aria-hidden="true">Créer votre compte</i>
-						</legend>
 
-						<div class="mb-3 ">
-							<label for="exampleInputEmail1" class="form-label">Adresse mail</label>
-							<input type="email" placeholder="Email address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+					<legend>
+						<i class="fa fa-lock" aria-hidden="true">Créer votre compte</i>
+					</legend>
 
-						</div>
+					<div class="mb-3 ">
+						<label for="exampleInputEmail1" class="form-label">Adresse mail</label>
+						<input type="email" placeholder="Email address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
 
-						<div class="mb-3">
-							<label for="exampleInputPassword1" class="form-label">Mot de passe:</label>
-							<input type="password" placeholder="Password" class="form-control" id="exampleInputPassword1" required>
-						</div>
+					</div>
 
-						<div class="mb-3">
-							<label for="exampleInputPassword1" class="form-label">Saisir à nouveau votre mot de passe:</label>
-							<input type="password" placeholder="Rewrite Password" class="form-control" id="exampleInputPassword1" required>
-						</div>
+					<div class="mb-3">
+						<label for="exampleInputPassword1" class="form-label">Mot de passe:</label>
+						<input type="password" placeholder="Password" class="form-control" id="exampleInputPassword1" required>
+					</div>
 
-						<div class="mb-3 form-check rounded">
-							<input type="checkbox" class="form-check-input" id="exampleCheck1">
-							<label class="form-check-label" for="exampleCheck1">Remember me</label>
-						</div>
+					<div class="mb-3">
+						<label for="exampleInputPassword1" class="form-label">Saisir à nouveau votre mot de passe:</label>
+						<input type="password" placeholder="Rewrite Password" class="form-control" id="exampleInputPassword1" required>
+					</div>
 
-						<button type="submit" class="btn btn-primary">Valider
-							<i class="fa fa-sign-in" aria-hidden="true"></i>
-						</button>
-					</fieldset>
+					<div class="mb-3 form-check rounded">
+						<input type="checkbox" class="form-check-input" id="exampleCheck1">
+						<label class="form-check-label" for="exampleCheck1">Remember me</label>
+					</div>
+
+					<button type="submit" class="btn btn-primary">Valider
+						<i class="fa fa-sign-in" aria-hidden="true"></i>
+					</button>
+
 				</form>
 			</div>
 		</div>
@@ -44,8 +44,8 @@
 <div>
 	<p>{{status}}:</p>
 	{# si compte définie affiche utilisateur #}
-	{% if utilisateur is defined %}
-		{{utilisateur.get_email}}:
-		{{utilisateur.get_password}}
+	{% if user is defined %}
+		{{user.get_email}}:
+		{{user.get_password}}
 	</div>
 {% endif %}{% endif %}

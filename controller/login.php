@@ -1,22 +1,23 @@
 <?php
 
 //Soumission de formulaire
+$usersDao = new UsersDAO(); // connexion bdd
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
 
     /*foreach ($users as $user) {
         //utilisateur trouvée
     }*/
-    $usersDao = new UsersDAO(); // connexion bdd
+
 
     $user = new Users(null, $_POST['email'], $_POST['password']);
     //création user
 
-    $status = $usersDao->add($user); // appelle contrôleur add pour ajouter une film
+    $status = $usersDao->addUser($user); // appelle contrôleur add pour ajouter une film
 
     //On affiche le template Twig correspondant
     if ($status) {
-        echo $twig->render('login.html.twig', ['status' => "Ajout OK", 'utilisateur' => $user]);
+        echo $twig->render('login.html.twig', ['status' => "Ajout OK", 'user' => $user]);
     } else {
         echo $twig->render('login.html.twig', ['status' => "Erreur Ajout"]);
     }
@@ -26,4 +27,4 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
 
 //la session de l'usuaire reste activée 
-if (!isset($_SESSION['LOGGED_USER']));
+//if (!isset($_SESSION['LOGGED_USER']));
