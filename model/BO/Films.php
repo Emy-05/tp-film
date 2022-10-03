@@ -68,33 +68,39 @@ class Films
 
     // ajout des setters
 
-    public function set_titre($_titre)
+    public function set_titre($titre)
     {
-        $this->_titre = $_titre;
+        $this->_titre = $titre;
     }
 
-    public function set_realisateur($_realisateur)
+    public function set_realisateur($realisateur)
     {
-        $this->_realisateur = $_realisateur;
+        $this->_realisateur = $realisateur;
     }
 
-    public function set_affiche($_affiche)
+    public function set_affiche($affiche)
     {
-        $this->_affiche = $_affiche;
+        $this->_affiche = $affiche;
     }
 
-    public function set_annee($_annee)
+    public function set_annee($annee)
     {
-        $this->_annee = $_annee;
+        $this->_annee = $annee;
     }
 
-    public function set_tabRoles($_tabRoles)
+    public function set_tabRoles($tabRoles)
     {
-        $this->_tabRoles = $_tabRoles;
+        $this->_tabRoles = $tabRoles;
     }
 
-    public function set_idFilm($_idFilm)
+    public function set_idFilm($idFilm)
     {
-        $this->_idFilm = $_idFilm;
+        $this->_idFilm = $idFilm;
+    }
+
+    // ajout d'un rôle
+    public function add_role($role)
+    {
+        $this->_tabRoles[] = $role;
     }
 }
