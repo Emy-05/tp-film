@@ -11,7 +11,7 @@ class UsersDAO extends Dao
 {
     // Fonction qui vérifie que l'identification saisie 
     // est correcte.
-    /*function utilisateur_existe($email, $password)
+    /* function utilisateur_existe($email, $password)
     {
         // Définition et exécution d'une requête préparée
         $sql  = 'SELECT 1 FROM users ';
@@ -31,13 +31,27 @@ class UsersDAO extends Dao
         return (bool) $existe;
     }*/
 
+    //Récupérer tous les utilisateurs
+    public function getAll()
+    {
+        //On définit la bdd pour la fonction
+
+        $query = $this->_bdd->prepare("SELECT user.idUser, email, password, userName FROM user");
+        $query->execute();
+        $users = array();
+
+        while ($data = $query->fetch()) {
+            $users[] = new Users($data['idUser'], $data['email'], $data['password'], $data['userName']);
+        }
+        return ($users);
+    }
 
     //Ajouter un utilisateur
-    public function addUser($data)
+    public function add($data)
     {
         //Requete d'insertion INNER JOIN dans le MODEL
         $valeurs = ['email' => $data->get_email(), 'password' => $data->get_password()];
-        $requete = 'INSERT INTO user VALUES (email, password) VALUES (:email, :password)';
+        $requete = 'INSERT INTO user (email, password) VALUES (:email, :password)';
         $insert = $this->_bdd->prepare($requete);
         if (!$insert->execute($valeurs)) {
             //print_r($insert->errorInfo());
@@ -46,6 +60,14 @@ class UsersDAO extends Dao
             return true;
         }
     }
+    /* $req2 = $database->prepare('INSERT INTO user VALUES(:email, :password, :type');
+    $req2->execute(array(
+        'email' => $_POST['email'],
+        'password' => $_POST['password'],
+        'type' => 'normal'
+        ));*/
+
+
 
     public function getOne($id_user)
     {
@@ -56,23 +78,6 @@ class UsersDAO extends Dao
         $user = new Users($data['id_user'], $data['email'], $data['password']);
         return ($user);
     }
-
-
-    //Récupérer tous les utilisateurs
-    public function getAll()
-    {
-        //On définit la bdd pour la fonction
-
-        $query = $this->_bdd->prepare("SELECT idUser, email, password, userName FROM user");
-        $query->execute();
-        $users = array();
-
-        while ($data = $query->fetch()) {
-            $users[] = new Users($data['idUser'], $data['email'], $data['password']);
-        }
-        return ($users);
-    }
-
 
 
     // supprimer 1 user grâce à son id

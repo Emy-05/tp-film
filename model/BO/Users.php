@@ -72,4 +72,10 @@ class Users
     {
         $this->_password = $_password;
     }
+
+    function utilisateur_existe($_email, $_password)
+    {
+        $this->_email = $_email;
+        $this->_password = $_password;
+    }
 }
