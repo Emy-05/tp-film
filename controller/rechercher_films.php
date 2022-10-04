@@ -12,7 +12,7 @@ $filmsDao = new FilmsDAO(); // connexion bdd
 if (isset($_POST["search"])) {
     $allmovies = $filmsDao->getAll($_POST["search"]);
 } else {
-    $allmovies = $filmsDao->getAll($search); // récupération de tous les films récupéré dans tableau d'offres
+    $allmovies = $filmsDao->getAll("search"); // récupération de tous les films récupéré dans tableau d'offres
 }
 
 //On affiche le template Twig correspondant
