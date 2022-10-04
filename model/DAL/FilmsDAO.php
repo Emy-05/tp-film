@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -25,7 +24,6 @@ class FilmsDAO extends Dao
         }
         return ($movies); // on retourne le tableau des films rempli des infos prises dans la bdd avec jointure de la bdd role
     }
-
 
     //Ajouter un film
     public function add($data)

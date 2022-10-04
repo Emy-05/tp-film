@@ -7,7 +7,7 @@
 					<div class="col-12 ml-3">
 						<h1 class="pt-2 mb-2">Connexion</h1>
 					</div<divclass="col-12">
-					{% if password is defined %}
+					{% if password is not defined %}
 						<label class="form-label text-danger">Email ou mot de passe incorrect</label>
 					{% endif %}
 					{% if email is not defined %}
@@ -15,7 +15,7 @@
 					{% else %}
 						<input value={{email}} name="mail" type="email" class="form-control mb-3" placeholder="Email">
 					{% endif %}
-					{% if password is not defined %}
+					{% if password is defined %}
 						<input name="password" type="password" class="form-control mb-2" placeholder="***">
 					{% else %}
 						<input value={{password}} name="password" type="password" class="form-control mb-2" placeholder="***">
