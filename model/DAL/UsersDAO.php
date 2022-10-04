@@ -45,10 +45,10 @@ class UsersDAO extends Dao
     }
 
 
-    public function get_user($mail)
+    public function get_user($email)
     {
         $query = $this->_bdd->prepare('SELECT * FROM user WHERE user.email = :email');
-        $query->execute(array(':email' => $mail));
+        $query->execute(array(':email' => $email));
         $data = $query->fetch();
         if ($data) {
             $user = new Users($data['idUser'], $data['userName'], $data['email'], $data['password']);
