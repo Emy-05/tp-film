@@ -14,7 +14,7 @@ if (isset($_SESSION['email'])) {
         $film = new Films(null, $_POST['titre'], $_POST['realisateur'], $_POST['affiche'], $_POST['annee']);
         //création nouveau film
 
-        $status = $filmsDao->add($film); // appelle contrôleur add pour ajouter une film
+        $status = $filmsDao->add($film); // appelle contrôleur add pour ajouter un film
 
         //On affiche le template Twig correspondant
         if ($status) {
@@ -22,11 +22,11 @@ if (isset($_SESSION['email'])) {
         } else {
             echo $twig->render('creer_film.html.twig', ['status' => "Erreur Ajout"]);
         }
-    } else { // on affiche le twig avec le formulaire pour ajouter l'film
+    } else { // on affiche le twig avec le formulaire pour ajouter le film
         echo $twig->render('creer_film.html.twig');
     }
 
-    // si pas connecté on affiche lien pour la connexion else 
+    // si pas connecté on affiche lien pour la connexion 
 } else {
     header("Location:login");
 }

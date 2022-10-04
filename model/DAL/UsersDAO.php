@@ -59,22 +59,6 @@ class UsersDAO extends Dao
     }
 
 
-    //Récupérer tous les utilisateurs
-    public function getAllUsers()
-    {
-        //On définit la bdd pour la fonction
-
-        $query = $this->_bdd->prepare("SELECT idUser, email, password, userName FROM user");
-        $query->execute();
-        $users = array();
-
-        while ($data = $query->fetch()) {
-            $users[] = new Users($data['idUser'], $data['email'], $data['password']);
-        }
-        return ($users);
-    }
-
-
 
     // supprimer 1 user grâce à son id
     public function deleteUser($idUser): int
