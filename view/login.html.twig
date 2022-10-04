@@ -1,11 +1,11 @@
 {% if status is not defined %}
 
 	<form action="login.php" method="post">
-		<div class="card border-dark mb-5 mt-5 m-auto" style="width: 18rem; height:22rem">
+		<div class="card mb-5 mt-5 m-auto" style="width: 17rem; height:20rem">
 			<div class="card-body m-auto">
 				<div class="row">
 					<div class="col-12 ml-3">
-						<h2 class="col text-center pt-2 mb-4">Connexion</h2>
+						<h1 class=" pt-2 mb-2">Connexion</h1>
 					</div<divclass="col-12">
 					{% if password is defined %}
 						<label class="form-label text-danger">Email ou mot de passe incorrect</label>
@@ -25,7 +25,7 @@
 			</div>
 			<div class="row">
 				<div class="col-12 m-auto form-check">
-					<input name="remember" class="form-check-input mb-2 mt-1 ml-4" type="checkbox" value="rememberMe" id="Check">
+					<input name="remember" class="form-check-input mb-1 mt-1 ml-4" type="checkbox" value="rememberMe" id="Check">
 					<label class="form-check-label mb-2 mt-1 ml-4" for="flexCheckDefault">
 						Remember me
 					</label>
@@ -34,12 +34,12 @@
 			<!--button-->
 			<div class="row">
 				<div class="col-12 mb-2">
-					<button type="submit" class="btn btn-primary mt-2 mb-2">Sign in</button>
+					<button type="submit" class="btn btn-primary mt-1 mb-1">Sign in</button>
 					<i class="fa fa-sign-in" aria-hidden="true"></i>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-12 m-auto">
+				<div class="col-12 text-center">
 					<a name="creer_compte" href="creer_compte.php">ou créer un compte</a>
 				</div>
 			</div>
