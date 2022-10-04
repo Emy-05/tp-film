@@ -57,11 +57,10 @@ class UsersDAO extends Dao
         }
         return ($user);
     }
-<<<<<<< HEAD
 
 
     //Récupérer tous les utilisateurs
-    public function getAll($search)
+    public function getAllUsers()
     {
         //On définit la bdd pour la fonction
 
@@ -177,6 +176,4 @@ class UsersDAO extends Dao
             die("L'utilisateur {$email} n'est pas enregistré.");
         }
     }*/
-=======
->>>>>>> 4ce47202897ec70e61cf18a2b8d091b7edf7ea05
 }
