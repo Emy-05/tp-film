@@ -59,7 +59,7 @@ class UsersDAO extends Dao
 
 
     //Récupérer tous les utilisateurs
-    public function getAll()
+    public function getAll($search)
     {
         //On définit la bdd pour la fonction
 

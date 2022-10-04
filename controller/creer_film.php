@@ -5,10 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//checker si connecté
+//checker si connecté via mail
 if (isset($_SESSION['email'])) {
     if (isset($_POST['titre']) && isset($_POST['realisateur']) && isset($_POST['affiche']) && isset($_POST['annee'])) { // on récupère les infos du film envoyés par le formulaire
-        $filmsDao = new FilmsDAO(); // connexion bdd
+        $filmsDao = new FilmsDAO(); // connexion bdd pour instancier un nouveau film
 
 
         $film = new Films(null, $_POST['titre'], $_POST['realisateur'], $_POST['affiche'], $_POST['annee']);
@@ -28,5 +28,5 @@ if (isset($_SESSION['email'])) {
 
     // si pas connecté on affiche lien pour la connexion else 
 } else {
-    header("Location:connexion");
+    header("Location:login");
 }
