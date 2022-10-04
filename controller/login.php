@@ -1,5 +1,3 @@
-
-
 <?php
 
 if (isset($_POST["email"]) and isset($_POST["password"])) {
@@ -10,6 +8,7 @@ if (isset($_POST["email"]) and isset($_POST["password"])) {
         $userPassword = $user->get_password();
         $userName = $user->get_userName();
         $id = $user->get_idUser();
+
         if (($userMail == $_POST["email"]) && ($userPassword == $_POST["password"])) {
             $_SESSION['email'] = $userEmail;
             $_SESSION['userName'] = $userName;
