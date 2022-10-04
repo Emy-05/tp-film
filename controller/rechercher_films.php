@@ -6,8 +6,19 @@
  * and open the template in the editor.
  */
 
+<<<<<<< HEAD
 // checker si connecté via email
 if (isset($_SESSION['email'])) {
+=======
+//On appelle la fonction getAll() 
+$filmsDao = new FilmsDAO(); // connexion bdd
+/* @var $allmovies type */
+if (isset($_POST["search"])) {
+    $allmovies = $filmsDao->getAll($_POST["search"]);
+} else {
+    $allmovies = $filmsDao->getAll($search); // récupération de tous les films récupéré dans tableau d'offres
+}
+>>>>>>> 4ce47202897ec70e61cf18a2b8d091b7edf7ea05
 
     //On appelle la fonction getAll() 
     $filmsDao = new FilmsDAO(); // connexion bdd

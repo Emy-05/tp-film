@@ -6,56 +6,58 @@
  * and open the template in the editor.
  
  */
-
 class UsersDAO extends Dao
 {
-    // Fonction qui vérifie que l'identification saisie 
-    // est correcte.
-    /*function utilisateur_existe($email, $password)
+    //Fonction pour récupérer les informations des utilisateurs
+    public function getAll($search)
+    { //On définit la bdd 
+        $query = $this->_bdd->prepare("SELECT idUser, userName, email, password FROM user");
+        $query->execute();
+        $user = array();
+
+        while ($data = $query->fetch()) {
+            $user[] = new Users($data['idUser'], $data['userName'], $data['email'], $data['password']);
+        }
+        return ($user);
+    }
+
+    public function getOne($idUser)
     {
-        // Définition et exécution d'une requête préparée
-        $sql  = 'SELECT 1 FROM users ';
-        $sql .= 'WHERE email = ? AND password = ?';
-        $requête = mysqli_stmt_init($connexion);
-        $ok = mysqli_stmt_prepare($requête, $sql);
-        $ok = mysqli_stmt_bind_param($requête, 'ss', $email, $password);
-        $ok = mysqli_stmt_execute($requête);
-        mysqli_stmt_bind_result($requête, $existe);
-        $ok = mysqli_stmt_fetch($requête);
-        mysqli_stmt_free_result($requête);
-        // L'identification est bonne si la requête a retourné 
-        // une ligne (l'utilisateur existe et le mot de passe 
-        // est bon).
-        // Si c'est le cas $existe contient 1, sinon elle est 
-        // vide. Il suffit de la retourner en tant que booléen.
-        return (bool) $existe;
-    }*/
+        $query = $this->_bdd->prepare('SELECT * FROM user WHERE user.idUser = :idUser');
+        $query->execute(array(':idUser' => $idUser));
+        $data = $query->fetch();
+        $user = new Users($data['idUser'], $data['userName'], $data['email'], $data['password']);
+        return ($user);
+    }
 
 
     //Ajouter un utilisateur
-    public function addUser($data)
-    {
-        //Requete d'insertion INNER JOIN dans le MODEL
-        $valeurs = ['email' => $data->get_email(), 'password' => $data->get_password()];
-        $requete = 'INSERT INTO user VALUES (email, password) VALUES (:email, :password)';
+    public function add($data)
+    { //Requete
+        $valeurs = ['idUser' => $data->get_idUser(), 'userName' => $data->get_userName(), 'email' => $data->get_email(), 'password' => $data->get_password()];
+        $requete = 'INSERT INTO user (idUser, userName, email, password) VALUES (:idUser , :userName , :email , :password)';
         $insert = $this->_bdd->prepare($requete);
         if (!$insert->execute($valeurs)) {
-            //print_r($insert->errorInfo());
             return false;
         } else {
             return true;
         }
     }
 
-    public function getOne($id_user)
-    {
 
-        $query = $this->_bdd->prepare('SELECT * FROM user WHERE user.idUsers = :id_user')->fetch(PDO::FETCH_ASSOC);
-        $query->execute(array(':id_user' => $id_user));
+    public function get_user($mail)
+    {
+        $query = $this->_bdd->prepare('SELECT * FROM user WHERE user.email = :email');
+        $query->execute(array(':email' => $mail));
         $data = $query->fetch();
-        $user = new Users($data['id_user'], $data['email'], $data['password']);
+        if ($data) {
+            $user = new Users($data['idUser'], $data['userName'], $data['email'], $data['password']);
+        } else {
+            $user = null;
+        }
         return ($user);
     }
+<<<<<<< HEAD
 
 
     //Récupérer tous les utilisateurs
@@ -175,4 +177,6 @@ class UsersDAO extends Dao
             die("L'utilisateur {$email} n'est pas enregistré.");
         }
     }*/
+=======
+>>>>>>> 4ce47202897ec70e61cf18a2b8d091b7edf7ea05
 }

@@ -4,9 +4,6 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
-
-/**
  * Description of films
  *
  * @author 1703728
@@ -49,7 +46,7 @@ class FilmsDAO extends Dao
     public function getOne($id_movie)
     {
 
-        $query = $this->_bdd->prepare('SELECT * FROM films WHERE films.idFilm = :idFilm')->fetch(PDO::FETCH_ASSOC);
+        $query = $this->_bdd->prepare('SELECT * FROM films WHERE films.idFilm = :idFilm');
         $query->execute(array(':idFilm' => $id_movie));
         $data = $query->fetch();
         $movie = new Films($data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['personnage']);

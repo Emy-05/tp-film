@@ -1,30 +1,33 @@
+
+
 <?php
 
-//Soumission de formulaire
-$usersDao = new UsersDAO(); // connexion bdd
-
-if (isset($_POST['email']) && isset($_POST['password'])) {
-
-    /*foreach ($users as $user) {
-        //utilisateur trouvée
-    }*/
-
-
-    $user = new Users(null, $_POST['email'], $_POST['password']);
-    //création user
-
-    $status = $usersDao->addUser($user); // appelle contrôleur add pour ajouter une film
-
-    //On affiche le template Twig correspondant
-    if ($status) {
-        echo $twig->render('login.html.twig', ['status' => "Ajout OK", 'user' => $user]);
+if (isset($_POST["email"]) and isset($_POST["password"])) {
+    $userDao = new UsersDAO(); //connexion dbb
+    $user = $userDao->get_user($_POST["email"]);
+    if ($user != null) {
+        $userEmail = $user->get_email();
+        $userPassword = $user->get_password();
+        $userName = $user->get_userName();
+        $id = $user->get_idUser();
+        if (($userMail == $_POST["email"]) && ($userPassword == $_POST["password"])) {
+            $_SESSION['email'] = $userEmail;
+            $_SESSION['userName'] = $userName;
+            $_SESSION['idUser'] = $id;
+            if (isset($_POST["remember"])) {
+                setcookie("email", $email);
+            }
+            header('location:user');
+        } else {
+            echo $twig->render('login.html.twig', ['password' => 'true']);
+        }
     } else {
-        echo $twig->render('login.html.twig', ['status' => "Erreur Ajout"]);
+        echo $twig->render('login.html.twig', ['password' => 'true']);
     }
-} else { // on affiche le twig avec le formulaire pour ajouter un nouveau utilisateur
-    echo $twig->render('login.html.twig');
+} else {
+    if (isset($_COOKIE["email"])) {
+        echo $twig->render('login.html.twig', ['email' => $_COOKIE["email"]]);
+    } else {
+        echo $twig->render('login.html.twig');
+    }
 }
-
-
-//la session de l'usuaire reste activée 
-//if (!isset($_SESSION['LOGGED_USER']));
