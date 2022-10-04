@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4cc743cd130badf78fd8a9f396d03c276fbc6a3c
 <?php
 //isset = verifier email et password sont rentrés dans le formulaire
 if (isset($_POST["email"]) && isset($_POST["password"])) {
