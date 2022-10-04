@@ -1,66 +1,53 @@
-<div class="row">
-	<div class="p-5 mb-2 ">
-		<div class="col-sm-3 border-0 ">
-			<div class="card">
-  				<div class="card-body">
-  					<div class="formulaire">
-						<form action="login" method="POST">
-							<fieldset>
-								<legend>Connexion
-							</legend>
+{% if status is not defined %}
 
-						<div class="mb-3">
+	<form action="login" method="post">
+		<div class="card mb-5 mt-5 m-auto" style="width: 17rem; height:20rem">
+			<div class="card-body m-auto">
+				<div class="row">
+					<div class="col-12 ml-3">
+						<h1 class="pt-2 mb-2">Connexion</h1>
+					</div<divclass="col-12">
+					{% if password is defined %}
+						<label class="form-label text-danger">Email ou mot de passe incorrect</label>
+					{% endif %}
+					{% if email is not defined %}
+						<input name="email" type="email" class="form-control mb-3" placeholder="youremail@email.com">
+					{% else %}
+						<input value={{email}} name="mail" type="email" class="form-control mb-3" placeholder="Email">
+					{% endif %}
+					{% if password is not defined %}
+						<input name="password" type="password" class="form-control mb-2" placeholder="***">
+					{% else %}
+						<input value={{password}} name="password" type="password" class="form-control mb-2" placeholder="***">
+					{% endif %}
 
-							<input type="email" nom="email" placeholder="sande@afpa.fr" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-						</div>
-
-						<div class="mb-3">
-
-							<input type="password" nom="password" placeholder=" *** " class="form-control" id="exampleInputPassword1">
-						</div>
-
-						<div class="mb-3 form-check rounded">
-							<input type="checkbox" class="form-check-input" id="exampleCheck1">
-							<label class="form-check-label" for="exampleCheck1">Remember me</label>
-						</div>
-						<!--button-->
-						<button type="submit" class="btn btn-primary">Sign in
-							<i class="fa fa-sign-in" aria-hidden="true"></i>
-						</button>
-							<a href="creer_user" class="card-link">ou créer un compte</a>
 				</div>
 			</div>
-					</fieldset>
-				</form>
+			<div class="row">
+				<div class="col-12 m-auto form-check">
+					<input name="remember" class="form-check-input mb-1 mt-1 ml-4" type="checkbox" value="rememberMe" id="Check">
+					<label class="form-check-label mb-2 mt-1 ml-4" for="flexCheckDefault">
+						Remember me
+					</label>
+				</div>
+			</div>
+			<!--button-->
+			<div class="row">
+				<div class="col-12 mb-2">
+					<button type="submit" class="btn btn-primary mt-1 mb-1">Sign in</button>
+					<i class="fa fa-sign-in" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-center">
+					<a name="creer_compte" href="creer_compte.php">ou créer un compte</a>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-<div class="card">
-  <div class="card-body">
-	<form action="creer_film" method="post">
-		<div class="bloc_formulaire">
-			<label for="title">Titre</label>
-			<input type="text" placeholder="entrer le titre" name="titre" required>
-
-			<label for="description">Réalisateur</label>
-			<input type="text" placeholder="entrer le réalisateur" name="realisateur" required>
-			<button type="submit">
-				Ajouter</button>
-		</div>
-	</form>
-  </div>
-</div>
-
-
-
-
-</div>
-
-<div>
-	{# si compte définie affiche utilisateur #}
-	{% if user is defined %}
-		{{user.get_email}}:
-		{{user.get_password}}
+</form></div>{% else %}<div class="container text-center">
+<div class="row">
+	<div class="col-12 m-auto text-center">
+		<label class="form-label">Vous êtes connecté</label>
 	</div>
-{% endif %}
+</div></div>{% endif %}
