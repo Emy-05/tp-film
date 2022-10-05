@@ -15,22 +15,6 @@
         </div>
          {# fin bloc rechercher un film #}         
                         
-                    
-{% if movie is not defined %}  {# si le film est inconnu on affiche un message et une image vide #}
-<div class="col-4">
-  <h2>Film non trouvé</h2>
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-      <img src="https://via.placeholder.com/250" class="d-block w-100" alt="affiche film">
-      </div>
-    </div>
-  </div>
-</div>
-
-
-{% else %}
-{% endif %}
 
 {% for movie in allmovies %} {# pour tous les films trouvés on affiche ses infos #}
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
