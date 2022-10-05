@@ -49,7 +49,7 @@ class ActeursDAO extends Dao
     public function getOne($id_actor)
     {
 
-        $query = $this->_bdd->prepare('SELECT * FROM acteurs WHERE idActeur = :idActeur')->fetch(PDO::FETCH_ASSOC);
+        $query = $this->_bdd->prepare('SELECT * FROM acteurs WHERE idActeur = :idActeur');
         $query->execute(array(':idActeur' => $id_actor));
         $data = $query->fetch();
         $actor = new Acteurs($data['idActeur'], $data['nom'], $data['prenom']);

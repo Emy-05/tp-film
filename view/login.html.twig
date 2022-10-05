@@ -6,8 +6,9 @@
 				<div class="row">
 					<div class="col-12 ml-3">
 						<h1 class="pt-2 mb-2">Connexion</h1>
-					</div<divclass="col-12">
-					{% if password is not defined %}
+					</div>
+						<divclass="col-12">
+					{% if password is defined %}
 						<label class="form-label text-danger">Email ou mot de passe incorrect</label>
 					{% endif %}
 					{% if email is not defined %}
@@ -15,14 +16,10 @@
 					{% else %}
 						<input value={{email}} name="mail" type="email" class="form-control mb-3" placeholder="Email">
 					{% endif %}
-					{% if password is defined %}
 						<input name="password" type="password" class="form-control mb-2" placeholder="***">
-					{% else %}
-						<input value={{password}} name="password" type="password" class="form-control mb-2" placeholder="***">
-					{% endif %}
-
 				</div>
 			</div>
+		</div>
 			<div class="row">
 				<div class="col-12 m-auto form-check">
 					<input name="remember" class="form-check-input mb-1 mt-1 ml-4" type="checkbox" value="rememberMe" id="Check">
@@ -40,14 +37,18 @@
 			</div>
 			<div class="row">
 				<div class="col-12 text-center">
-					<a name="creer_compte" href="creer_compte.php">ou créer un compte</a>
+					<a name="creer_compte" href="creer_user">ou créer un compte</a>
 				</div>
 			</div>
 		</div>
 	</div>
-</form></div>{% else %}<div class="container text-center">
+</form>
+</div>
+{% else %}
+<div class="container text-center">
 <div class="row">
 	<div class="col-12 m-auto text-center">
 		<label class="form-label">Vous êtes connecté</label>
 	</div>
-</div></div>{% endif %}
+</div></div>
+{% endif %}
