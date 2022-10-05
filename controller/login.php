@@ -15,7 +15,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         $userPassword = $user->get_password();
         $userName = $user->get_userName();
         $idUser = $user->get_idUser();
-        // Vérifier que l'email et le password correspondent à un utilisateur.
+        // Vérifier que l'email correspond à un utilisateur.
         if (($userEmail == $_POST["email"])) {
             $_SESSION['email'] = $userEmail;
             $_SESSION['userName'] = $userName;
