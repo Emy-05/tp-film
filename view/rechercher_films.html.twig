@@ -16,33 +16,59 @@
         </div>
          {# fin bloc rechercher un film #}         
                         
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        {% for movie in allmovies %} {# pour tous les films trouvés on affiche ses infos #}
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+        {% for films in allmovies %} {# pour tous les films trouvés on affiche ses infos #}
         {% if loop.first %}
+
           <div class="carousel-item active">
             <div class="col-6">
               <h1>{{ films.get_titre}} ({{films.get_annee}})</h1> 
             </div>
-            <div class="col-4">
-              <img src="{{film.get_affiche}}" class="d-block w-100" alt="affiche film">
-            </div>
-          </div>
-    </div>
-      <div class="col-6">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Acteurs:</h5>
-              <div class="card-text">
-                  {% for role in films.get_tabRoles %} 
-														{{role.get_personnage}} //( {{films.get_tabRoles}})
-														:
-														 {{films.get_nom}} {{films.get_prenom}}
-                            <br>
-                  {% endfor %}
+              <div class="col-4">
+                <img src="{{film.get_affiche}}" class="d-block w-100" alt="affiche film">
+              </div>
+
+              <div class="col-6">
+                <div class="card" style="width: 18rem;">
+                   <div class="card-body">
+                      <h5 class="card-title">Acteurs:</h5>
+                        <div class="card-text">
+                           {% for role in films.get_tabRoles %} 
+ 														( {{role.get_personnage}})
+ 														:
+ 														 {{films.get_nom}} {{films.get_prenom}}
+                             <br>
+                           {% endfor %}
+                        </div>
+                    </div>
+                </div>
               </div>
           </div>
-        </div>
+            <div class="carousel-item">
+                       <div class="col-6">
+                         <h1>{{ films.get_titre}} ({{films.get_annee}})</h1> 
+                       </div>
+                         <div class="col-4">
+                           <img src="{{film.get_affiche}}" class="d-block w-100" alt="affiche film">
+                         </div>
+           
+                         <div class="col-6">
+                           <div class="card" style="width: 18rem;">
+                              <div class="card-body">
+                                 <h5 class="card-title">Acteurs:</h5>
+                                   <div class="card-text">
+                                      {% for role in films.get_tabRoles %} 
+            														( {{role.get_personnage}})
+            														:
+            														 {{films.get_nom}} {{films.get_prenom}}
+                                        <br>
+                                      {% endfor %}
+                                   </div>
+                               </div>
+                           </div>
+                         </div>
+            </div>
   {% endif %}
   {% endfor %}
   </div>
@@ -57,5 +83,4 @@
             
             </div>
         </div>
-    </div>
   
