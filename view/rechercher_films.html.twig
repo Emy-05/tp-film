@@ -22,7 +22,7 @@
         {% if loop.first %}
           <div class="carousel-item active">
             <div class="col-6">
-              <h1>{{ film.get_titre}} ({{film.get_annee}})</h1> 
+              <h1>{{ films.get_titre}} ({{films.get_annee}})</h1> 
             </div>
             <div class="col-4">
               <img src="{{film.get_affiche}}" class="d-block w-100" alt="affiche film">
@@ -34,11 +34,10 @@
           <div class="card-body">
             <h5 class="card-title">Acteurs:</h5>
               <div class="card-text">
-                  {% for role in films.get_tabRoles %}
-														{{role.get_personnage}} //( {{film.get_tabRoles}})
+                  {% for role in films.get_tabRoles %} 
+														{{role.get_personnage}} //( {{films.get_tabRoles}})
 														:
-														 {{film.get_nom}}
-														 {{film.get_prenom}}
+														 {{films.get_nom}} {{films.get_prenom}}
                             <br>
                   {% endfor %}
               </div>

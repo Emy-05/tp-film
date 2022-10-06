@@ -14,15 +14,13 @@
 class Roles
 {
     private $idActeur;
-    private $idFilm;
     private $personnage;
     private $idRole;
 
 
-    public function __construct($idActeur = null, $idFilm = null, $personnage = null, $idRole = null)
+    public function __construct($idActeur = null, $personnage = null, $idRole = null)
     {
         $this->set_idActeur($idActeur);
-        $this->set_idFilm($idFilm);
         $this->set_personnage($personnage);
         $this->set_idRole($idRole);
     }
@@ -44,15 +42,6 @@ class Roles
         return $this->idRole;
     }
 
-    public function get_annee()
-    {
-        return $this->annee;
-    }
-
-    public function get_idFilm()
-    {
-        return $this->idFilm;
-    }
 
 
     // ajout des setters
@@ -70,14 +59,5 @@ class Roles
     public function set_idRole($idRole)
     {
         $this->idRole = $idRole;
-    }
-    public function set_annee($annee)
-    {
-        $this->annee = $annee;
-    }
-
-    public function set_idFilm($idFilm)
-    {
-        $this->idFilm = $idFilm;
     }
 }
