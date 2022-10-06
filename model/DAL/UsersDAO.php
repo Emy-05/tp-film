@@ -11,7 +11,7 @@ class UsersDAO extends Dao
     //Fonction pour récupérer les informations des utilisateurs
     public function getAll($search)
     { //On définit la bdd 
-        $query = $this->_bdd->prepare("SELECT idUser, userName, email, password FROM user");
+        $query = $this->_bdd->prepare("SELECT idUser, userName, email, password FROM user WHERE password = :password");
         $query->execute();
         $user = array();
 
@@ -47,7 +47,7 @@ class UsersDAO extends Dao
 
     public function get_user($email)
     {
-        $query = $this->_bdd->prepare('SELECT * FROM user WHERE user.email = :email');
+        $query = $this->_bdd->prepare('SELECT * FROM user WHERE email = :email');
         $query->execute(array(':email' => $email));
         $data = $query->fetch();
         if ($data) {

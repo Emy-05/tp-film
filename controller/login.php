@@ -35,11 +35,11 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
             header('location:rechercher_films');
         } else {
-            echo $twig->render('login.html.twig', ['password' => 'Pas de connexion.']);
+            echo $twig->render('login.html.twig', ['creer_user.html.twig' => 'Créer votre compte']);
         }
     } else {
         echo $twig->render('login.html.twig', ['creer_user.html.twig' => 'Créer votre compte']);
     }
 } else {
-    echo $twig->render('login.html.twig', ['password' => "Veuillez entrer email et mot de passe"]);
+    echo $twig->render('login.html.twig', ['login.html.twig' => "Veuillez entrer email et mot de passe"]);
 }

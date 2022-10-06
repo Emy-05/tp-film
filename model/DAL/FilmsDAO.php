@@ -28,8 +28,7 @@ class FilmsDAO extends Dao
     //Ajouter un film
     public function add($data)
     {
-
-        $valeurs = ['titre' => $data->get_titre(), 'realisateur' => $data->get_realisateur(), 'affiche' => $data->get_affiche(), 'annee' => $data->get_annee(), 'personnage' => $data->get_personnage()];
+        $valeurs = ['titre' => $data->get_titre(), 'realisateur' => $data->get_realisateur(), 'affiche' => $data->get_affiche(), 'annee' => $data->get_annee()];
         $requete = 'INSERT INTO films (titre, realisateur, affiche, annee) VALUES (:titre , :realisateur, :affiche, :annee)';
         $insert = $this->_bdd->prepare($requete);
         if (!$insert->execute($valeurs)) {
@@ -47,7 +46,7 @@ class FilmsDAO extends Dao
         $query = $this->_bdd->prepare('SELECT * FROM films WHERE films.idFilm = :idFilm');
         $query->execute(array(':idFilm' => $id_movie));
         $data = $query->fetch();
-        $movie = new Films($data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['personnage']);
+        $movie = new Films($data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
         return ($movie);
     }
 
