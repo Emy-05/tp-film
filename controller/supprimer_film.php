@@ -1,9 +1,9 @@
 <?php
 
-if (isset($_POST['id'])) {
+if (isset($_POST['idFilm'])) {
     $filmsDao = new FilmsDao();
 
-    $status = $filmsDao->deleteFilm((int) $_POST['id']);
+    $status = $filmsDao->deleteFilm((int) $_POST['idFilm']);
 
 
     if ($status == 1) {

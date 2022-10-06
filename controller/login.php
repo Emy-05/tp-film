@@ -15,12 +15,12 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         $userPassword = $user->get_password();
         $userName = $user->get_userName();
         $idUser = $user->get_idUser();
-        // Vérifier que l'email et le password correspondent à un utilisateur.
+        // Vérifier que l'email correspond à un utilisateur.
         if (($userEmail == $_POST["email"])) {
             $_SESSION['email'] = $userEmail;
             $_SESSION['userName'] = $userName;
             $_SESSION['idUser'] = $idUser;
-            $_SESSION['password'] = $password;
+            $_SESSION['userPassword'] = $password;
 
             if (password_verify($userPassword, $passwordHash)) {
                 echo "connexion réussie";
@@ -30,7 +30,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
             //Si le Remember me est coché
             if (isset($_POST['remember'])) {
-                setcookie($userEmail, $UserPassword);
+                setcookie($userEmail, $userPassword);
             }
 
             header('location:rechercher_films');
