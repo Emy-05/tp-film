@@ -2,7 +2,7 @@
         <div class="bg-light p-4">
             <div class="row">
               <div class="col-12">
-                <h1 class ="fw-bold">Rechercher un film</h1=fw-bold>
+                <h1 class ="fw-bold">Rechercher un film</h1>
               </div>
                   <div class="col-12"><p>Saisir un mot du titre</p>
                   </div>
@@ -26,7 +26,7 @@
               <h1>{{ films.get_titre}} ({{films.get_annee}})</h1> 
             </div>
               <div class="col-4">
-                <img src="{{film.get_affiche}}" class="d-block w-100" alt="affiche film">
+                <img src="{{films.get_affiche}}" class="d-block w-100" alt="affiche film">
               </div>
 
               <div class="col-6">
@@ -50,7 +50,7 @@
                          <h1>{{ films.get_titre}} ({{films.get_annee}})</h1> 
                        </div>
                          <div class="col-4">
-                           <img src="{{film.get_affiche}}" class="d-block w-100" alt="affiche film">
+                           <img src="{{films.get_affiche}}" class="d-block w-100" alt="affiche film">
                          </div>
            
                          <div class="col-6">
@@ -75,10 +75,10 @@
 
 {# boutons carrousel #}
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="visually-hidden">Previous</span>
+      <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="visually-hidden">Next</span>
+      <span class="visually-hidden">Next</span>
     </button>      
             
             </div>
