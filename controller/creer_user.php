@@ -4,8 +4,8 @@
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $usersDao = new UsersDAO(); // connexion bdd
-
-    $user = new Users(null, $_POST['email'], $_POST['password']);
+    //var_dump($_POST['password']);
+    $user = new Users(null, $_POST['userName'], $_POST['email'], $_POST['password']);
     //création user
 
     $status = $usersDao->add($user); // appelle contrôleur add pour ajouter un utilisateur

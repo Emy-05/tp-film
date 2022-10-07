@@ -30,7 +30,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
             //Si le Remember me est coché
             if (isset($_POST['remember'])) {
-                setcookie($userEmail, $userPassword);
+                setcookie($userEmail);
             }
 
             header('location:rechercher_films');
