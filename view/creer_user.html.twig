@@ -2,28 +2,35 @@
 	{# si status pas défini on affiche le formulaire pour créer une offre #}
 	<div class="container-light bg-light">
 		<div class="col-12 ml-3">
-			<form action="creer_user.php" method="post">
+			<form action="creer_user" method="post">
 
 				<legend>
 					<h1 class="pt-1 px-4" aria-hidden="true">Créer votre compte</h1>
 				</legend>
 
 				<div class="mb-5 px-5">
+					<label for="exampleInputEmail1" class="form-label">UserName</label>
+					<input type="text" name="userName" placeholder="Username" class="form-control" aria-describedby="emailHelp">
+
+				</div>
+
+				<div class="mb-5 px-5">
 					<label for="exampleInputEmail1" class="form-label">Adresse mail</label>
-					<input type="email" placeholder="Email address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+					<input type="email" name="email" placeholder="Email address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
 
 				</div>
 				<div class="mb-2 px-5">
 					<label for="exampleInputPassword1" class="form-label">Mot de passe:</label>
-					<input type="password" placeholder="Password" class="form-control" id="exampleInputPassword1" required>
+					<input type="password" name="password" placeholder="Password" class="form-control" id="exampleInputPassword1" required>
 				</div>
 
 				<div class="mb-5 px-5">
 					<label for="exampleInputPassword1" class="form-label">Saisir à nouveau votre mot de passe:</label>
-					<input type="password" placeholder="Rewrite Password" class="form-control" id="exampleInputPassword1" required>
+					<input type="password" name="password" placeholder="Rewrite Password" class="form-control" id="exampleInputPassword1" required>
 				</div>
+
 				<div class="mb-2 px-5">
-					<button type="submit" class="btn btn-light">Valider
+					<button type="submit" class="btn btn-light" name="add">Valider
 						<i class="fa fa-sign-in" aria-hidden="true"></i>
 					</button>
 				</div>
@@ -31,14 +38,16 @@
 
 		</div>
 	</div>
-</div>{% else %}
+{% else %}
 
 
-<div>
-	<p>{{status}}:</p>
-	{# si compte définie affiche utilisateur #}
-	{% if user is defined %}
-		{{user.get_email}}:
-		{{user.get_password}}
-	</div>
-{% endif %}{% endif %}
+	<div>
+		<p>{{status}}:</p>
+		{# si compte définie affiche utilisateur #}
+		{% if user is defined %}
+			{{user.get_userName}}:
+			{{user.get_email}}
+
+		</div>
+	{% endif %}
+{% endif %}

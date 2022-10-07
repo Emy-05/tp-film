@@ -73,9 +73,9 @@ class Users
         $this->password = $password;
     }
 
-    function utilisateur_existe($email, $password)
+    function utilisateur_existe($_email, $_password)
     {
-        $this->_email = $email;
-        $this->_password = $password;
+        $this->_email = $_email;
+        $this->_password = $_password;
     }
 }
