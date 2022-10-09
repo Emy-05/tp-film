@@ -19,9 +19,18 @@
 	</div>
 	{# fin bloc rechercher un film #}
 
+			<div class="col-12">
+				<p>titre :{{movie.get_titre}} OR {{film.get_titre}}<br>
+					année:	{{films.get_annee}}
+          affiche :<img src="{{film.get_affiche}}"
+          role: {{role.get_personnage}}
+
+					nom: {{films.get_nom}}
+											{{films.get_prenom}}</p>
+			</div>
 	<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 		<div class="carousel-inner">
-			{% for films in allmovies %}
+			{% for film in allmovies %}
 				{# pour tous les films trouvés on affiche ses infos #}
 				{% if loop.first %}
 
