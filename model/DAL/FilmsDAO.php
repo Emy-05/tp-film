@@ -11,18 +11,19 @@ class FilmsDAO extends Dao
 {
 
     //Récupérer tous les films
-    public function getAll($search)
+    public function getAll()
     {
         //On définit la table pour la fonction avec la jointure
 
-        $query = $this->_bdd->prepare("SELECT films.idFilm, titre, realisateur, affiche, annee, idActeur, personnage, idRole FROM `films` INNER JOIN roles ON films.idFilm = roles.idFilm ");
+        $query = $this->_bdd->prepare("SELECT films.idFilm, titre, realisateur, affiche, annee FROM films"); //idActeur, personnage, idRole FROM + INNER JOIN role ON films.idFilm = roles.idFilm 
         $query->execute();
         $movies = array(); // récupération des films dans un tableau $movies
 
         while ($data = $query->fetch()) {
-            $movies[] = new Films($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee'], $data['idActeur'], $data['personnage'], $data['idRole']);
+            $movies[] = new Films($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']); // $data['idActeur'], $data['personnage'], $data['idRole']) 
         }
         return ($movies); // on retourne le tableau des films rempli des infos prises dans la bdd avec jointure de la table role
+        //var_dump($movies);
     }
 
     //Ajouter un film

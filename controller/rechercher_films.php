@@ -15,7 +15,8 @@ if (isset($_SESSION['email'])) {
     if (isset($_POST["search"])) {
         $allmovies = $filmsDao->getAll($_POST["search"]);
     } else {
-        $allmovies = $filmsDao->getAll(''); // récupération de tous les films récupéré dans tableau d'offres
+        $allmovies = $filmsDao->getAll(); 
+        //var_dump($allmovies);// récupération de tous les films récupéré dans tableau d'offres
     }
 
     //On affiche le template Twig correspondant

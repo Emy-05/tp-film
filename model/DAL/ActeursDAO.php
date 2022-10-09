@@ -15,7 +15,7 @@ class ActeursDAO extends Dao
 {
 
     //Récupérer tous les acteurs
-    public function getAll($search)
+    public function getAll()
     {
         //On définit la bdd pour la fonction
 
