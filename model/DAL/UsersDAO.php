@@ -9,7 +9,7 @@
 class UsersDAO extends Dao
 {
     //Fonction pour récupérer les informations des utilisateurs
-    public function getAll($search)
+    public function getAll()
     { //On définit la bdd 
         $query = $this->_bdd->prepare("SELECT idUser, userName, email, password FROM user WHERE password = :password");
         $query->execute();
