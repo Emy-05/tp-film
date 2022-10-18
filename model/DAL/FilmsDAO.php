@@ -11,17 +11,23 @@ class FilmsDAO extends Dao
 {
 
     //Récupérer tous les films
-    public function getAll()
+    public function getAll($search = null)
     {
-        //On définit la table pour la fonction avec la jointure
+        if ($search == null) // si search vide on affiche tous les films
+        {
+            $query = $this->_bdd->prepare("SELECT films.idFilm, titre, realisateur, affiche, annee, personnage FROM films INNER JOIN role ON films.idFilm = role.idFilm"); //idActeur, personnage, idRole FROM + INNER JOIN role ON films.idFilm = roles.idFilm 
+            $query->execute();
 
-        $query = $this->_bdd->prepare("SELECT films.idFilm, titre, realisateur, affiche, annee FROM films"); //idActeur, personnage, idRole FROM + INNER JOIN role ON films.idFilm = roles.idFilm 
-        $query->execute();
-        $movies = array(); // récupération des films dans un tableau $movies
-
-        while ($data = $query->fetch()) {
-            $movies[] = new Films($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['annee']); // $data['idActeur'], $data['personnage'], $data['idRole']) 
+        } else { // sinon on va chercher dans la bdd par rapport au titre entré
+            $query = $this->_bdd->prepare('SELECT films.idFilm, titre, realisateur, affiche, annee, personnage FROM films INNER JOIN role ON films.idFilm = role.idFilm');
+            $query->execute(array(':titre' => $search));
         }
+
+        $movies = array(); // récupération des films dans un tableau $movies  
+        while ($data = $query->fetch()) {
+        $movies[] = new Films($data['idFilm'], $data['titre'], $data['realisateur'], $data['affiche'], $data['personnage']); // $data['idActeur'], $data['personnage'], $data['idRole']) 
+        }
+
         return ($movies); // on retourne le tableau des films rempli des infos prises dans la bdd avec jointure de la table role
         //var_dump($movies);
     }
@@ -44,7 +50,7 @@ class FilmsDAO extends Dao
     public function getOne($id_movie)
     {
 
-        $query = $this->_bdd->prepare('SELECT * FROM films WHERE films.idFilm = :idFilm');
+        $query = $this->_bdd->prepare('SELECT * FROM films WHERE films.idFilm = :idFilm')->fetch(PDO::FETCH_ASSOC);
         $query->execute(array(':idFilm' => $id_movie));
         $data = $query->fetch();
         $movie = new Films($data['titre'], $data['realisateur'], $data['affiche'], $data['annee']);
@@ -74,4 +80,6 @@ class FilmsDAO extends Dao
         $query->execute(array('idRole' => $idRole));
         return ($query->rowCount());
     }
+
+
 }
